@@ -1,6 +1,21 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 
 export default function LoginPage() {
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  function handleContinue() {
+    if (!email) {
+      setMessage("Please enter your email.");
+      return;
+    }
+
+    setMessage(`Email entered: ${email}`);
+  }
+
   return (
     <main className="min-h-screen bg-black text-white flex items-center justify-center px-6 py-12">
       <section className="w-full max-w-md">
@@ -47,14 +62,25 @@ export default function LoginPage() {
             <input
               id="email"
               type="email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
               placeholder="you@example.com"
               className="w-full rounded-xl border border-zinc-800 bg-zinc-950 px-4 py-3.5 text-white outline-none transition focus:border-zinc-500"
             />
           </div>
 
-          <button className="w-full rounded-xl bg-zinc-800 px-6 py-3.5 font-semibold text-white transition-colors hover:bg-zinc-700">
+          <button
+            onClick={handleContinue}
+            className="w-full rounded-xl bg-zinc-800 px-6 py-3.5 font-semibold text-white transition-colors hover:bg-zinc-700"
+          >
             Continue with Email
           </button>
+
+          {message && (
+            <p className="text-center text-sm text-zinc-400">
+              {message}
+            </p>
+          )}
         </div>
 
         <p className="mt-8 text-center text-sm text-zinc-500">
