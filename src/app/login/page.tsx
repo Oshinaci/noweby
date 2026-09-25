@@ -6,14 +6,23 @@ import Link from "next/link";
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
   function handleContinue() {
+    setMessage("");
+    setError("");
+
     if (!email) {
-      setMessage("Please enter your email.");
+      setError("Please enter your email.");
       return;
     }
 
-    setMessage(`Email entered: ${email}`);
+    if (!email.includes("@")) {
+      setError("Please enter a valid email.");
+      return;
+    }
+
+    setMessage(`Ready to continue with ${email}`);
   }
 
   return (
@@ -76,8 +85,14 @@ export default function LoginPage() {
             Continue with Email
           </button>
 
+          {error && (
+            <p className="text-center text-sm text-red-400">
+              {error}
+            </p>
+          )}
+
           {message && (
-            <p className="text-center text-sm text-zinc-400">
+            <p className="text-center text-sm text-green-400">
               {message}
             </p>
           )}
