@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function LoginPage() {
@@ -8,9 +9,14 @@ export default function LoginPage() {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
+const router = useRouter();
+
   function handleContinue() {
-    setMessage("");
-    setError("");
+setMessage(`Ready to continue with ${email}`);
+
+setTimeout(() => {
+  router.push("/app");
+}, 800);   
 
     if (!email) {
       setError("Please enter your email.");
