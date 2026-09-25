@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-black text-white flex items-center justify-center px-6">
@@ -14,9 +16,12 @@ export default function Home() {
           Learn Web3. Understand it. Then use it.
         </p>
 
-        <button className="mt-10 rounded-full bg-white px-7 py-3.5 font-semibold text-black transition-transform hover:scale-105">
+        <Link
+          href="/login"
+          className="mt-10 inline-block rounded-full bg-white px-7 py-3.5 font-semibold text-black transition-transform hover:scale-105"
+        >
           Start Learning
-        </button>
+        </Link>
 
         <p className="mt-6 text-sm text-zinc-500">
           No seed phrase complexity. No Web3 jargon overload.
