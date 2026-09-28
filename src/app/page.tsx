@@ -9,7 +9,7 @@ export default function Home() {
         </p>
 
         <h1 className="text-5xl font-bold tracking-tight sm:text-7xl">
-          Web3 made simple.
+          Web3 made powerful.
         </h1>
 
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-zinc-400 sm:text-xl">
